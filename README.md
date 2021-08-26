@@ -8,7 +8,7 @@
     - TODO: make batch API call
     - TODO: make downloadFile API call
 
-- official documentation [http://document.profisms.cz/](https://ispis.cz/lustrace/apidocs)
+- [official documentation](https://ispis.cz/lustrace/apidocs)
 
 #### Install
 
