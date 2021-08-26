@@ -1,9 +1,5 @@
 ## ispis
 
-```sh
-npm i ispis
-```
-
 - node.js client for [ispis.cz](https://ispis.cz/) to search for execution
     - written in TS :check:
     - handling authentication :check:
@@ -12,7 +8,13 @@ npm i ispis
     - TODO: make batch API call
     - TODO: make downloadFile API call
 
-- official documentation [http://document.profisms.cz/](https://ispis.cz/lustrace/apidocs) TODO:
+- official documentation [http://document.profisms.cz/](https://ispis.cz/lustrace/apidocs)
+
+#### Install
+
+```sh
+npm i ispis
+```
 
 #### Basic usage
 
