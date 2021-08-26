@@ -1,0 +1,71 @@
+{
+  "version": "0.1.0",
+  "license": "BSD-3",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "npx tsdx watch --onSuccess \"node ./dist/index.js\"",
+    "customtest": "npx nodemon test/test.js",
+    "build": "npx tsdx build --target node",
+    "test": "npx tsdx test --watch",
+    "lint": "npx tsdx lint",
+    "prepare": "npx tsdx build --target node",
+    "np:publish": "git push origin master && np --no-tests --no-2fa",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "name": "ispis",
+  "author": "Maielo",
+  "module": "dist/ispis.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/ispis.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/ispis.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "keywords": [
+    "ts",
+    "typescript",
+    "ispis",
+    "js",
+    "javascript",
+    "node.js"
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^5.0.3",
+    "@types/node-fetch": "^2.5.12",
+    "husky": "^7.0.1",
+    "size-limit": "^5.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.6",
+    "node-fetch": "^2.6.1",
+    "query-string": "^7.0.1"
+  }
+}
