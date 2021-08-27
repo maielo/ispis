@@ -1,10 +1,11 @@
 ## ispis
 
-- node.js client for [ispis.cz](https://ispis.cz/) to search for execution
-    - written in TS :check:
-    - handling authentication :check:
-    - more friendly API :check:
-    - normalized input data :check:
+node.js client for [ispis.cz](https://ispis.cz/) to search for execution
+
+    - written in TS ✔️
+    - handling authentication ✔️
+    - more friendly API ✔️
+    - normalized input data ✔️
     - TODO: make batch API call
     - TODO: make downloadFile API call
 
