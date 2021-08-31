@@ -1,7 +1,6 @@
 ## ispis
 
-node.js client for [ispis.cz](https://ispis.cz/) to search for execution
-
+node.js client for [ispis.cz](https://ispis.cz/) to do background check of a person or company
     - written in TS ✔️
     - handling authentication ✔️
     - more friendly API ✔️
