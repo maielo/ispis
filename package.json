@@ -12,7 +12,6 @@
   },
   "scripts": {
     "start": "npx tsdx watch --onSuccess \"node ./dist/index.js\"",
-    "customtest": "npx nodemon test/test.js",
     "build": "npx tsdx build --target node",
     "test": "npx tsdx test --watch",
     "lint": "npx tsdx lint",

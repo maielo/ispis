@@ -52,7 +52,7 @@ export default class Ispis {
     this.url = `https://ispis.cz`;
   }
 
-  async searchPerson ({ profile = "CEE", firstName, lastName, birthDate, RC }: SearchPerson): Promise<IspisSubject> {
+  async searchPerson ({ profile = "CEE", firstName, lastName, birthDate, RC }: SearchPerson): Promise<IspisSubject | null> {
 
     const _config = {
       username: this.login,
@@ -60,27 +60,33 @@ export default class Ispis {
       profile,
       Jmeno: firstName,
       Prijmeni: lastName,
-      Narozen: dayjs(birthDate).format("DD.MM.YYYY"),
+    }
+
+    if (birthDate) {
+      // @ts-ignore
+      _config.Narozen = dayjs(birthDate).format("DD.MM.YYYY");
+    } else {
+      throw new Error("ispis - birthDate is required");
     }
 
     if (RC) {
       // @ts-ignore
       _config.RC = RC;
     }
+    try {
 
-    const _queryString = queryString.stringify(_config)
+      const _queryString = queryString.stringify(_config)
+      const response = await fetch(`${this.url}/api/lustraceSearchSubject?${_queryString}`)
+      const text = await response.text(); // this action will not fail
 
-    return fetch(`${this.url}/api/lustraceSearchSubject?${_queryString}`).then(res => {
+      return JSON.parse(text);
 
-      return res.json();
-    }).catch ((err) => {
-
-      console.error(err);
-      throw new Error(err.message)
-    });
+    } catch (err) {
+      return null;
+    }
   }
 
-  async searchCompany ({ profile, IC }: SearchCompany): Promise<IspisSubject> {
+  async searchCompany ({ profile, IC }: SearchCompany): Promise<IspisSubject | null> {
 
     const _config = {
       username: this.login,
@@ -89,15 +95,16 @@ export default class Ispis {
       IC
     }
 
-    const _queryString = queryString.stringify(_config)
+    try {
 
-    return fetch(`${this.url}/api/lustraceSearchSubject?${_queryString}`).then(res => {
+      const _queryString = queryString.stringify(_config)
+      const response = await fetch(`${this.url}/api/lustraceSearchSubject?${_queryString}`)
+      const text = await response.text(); // this action will not fail
 
-      return res.json();
-    }).catch ((err) => {
+      return JSON.parse(text);
 
-      console.error(err);
-      throw new Error(err.message)
-    });
+    } catch (err) {
+      return null;
+    }
   }
 }

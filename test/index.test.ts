@@ -12,8 +12,9 @@ describe('iSpis', () => {
       lastName: "Novák",
       birthDate: new Date(`06.16.1975`),
     });
-    expect(data.done).toEqual(1);
-    expect(data.warnings).toEqual(null);
+    expect(data);
+    expect(data?.done).toEqual(1);
+    expect(data?.warnings).toEqual(null);
 
   });
 
@@ -23,8 +24,20 @@ describe('iSpis', () => {
       profile: "Devel",
       IC: "26185610"
     });
+    expect(data);
+    expect(data?.done).toEqual(1);
+    expect(data?.warnings).toEqual(null);
+  });
 
-    expect(data.done).toEqual(1);
-    expect(data.warnings).toEqual(null);
+  it('Should not find record and data should be null', async () => {
+    expect.assertions(1);
+    const data = await ispis.searchPerson({
+      profile: "Devel",
+      firstName: "Pes",
+      lastName: "Les",
+      birthDate: new Date("InvalidDate"),
+    });
+    expect(data).toEqual(null);
+
   });
 });
